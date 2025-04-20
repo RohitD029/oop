@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+
+class SimpleCircle {
+private:
+    int itsRadius;
+
+public:
+    SimpleCircle() {               
+         itsRadius = 5; 
+        }                   
+    ~SimpleCircle() {  
+                       
+       }                                 
+    SimpleCircle(int radius) {        
+        itsRadius = radius;
+     }   
+    SimpleCircle(const SimpleCircle& other) {          
+        itsRadius = other.itsRadius;
+    }
+
+    SimpleCircle& operator=(const SimpleCircle& other) { 
+        if (this != &other) {
+            itsRadius = other.itsRadius;
+        }
+        return *this;
+    }
+
+    int getRadius() const { return itsRadius; }          // Accessor
+    void setRadius(int radius) { itsRadius = radius; }   // Mutator
+
+    
+    SimpleCircle& operator++() {
+        ++itsRadius;
+        return *this;
+    }
+
+    SimpleCircle operator++(int) {
+        SimpleCircle temp = *this;
+        itsRadius++;
+        return temp;
+    }
+};
+
+int main() {
+    SimpleCircle c1;         
+    SimpleCircle c2(15);   
+
+    ++c1; 
+    c2++; 
+
+    cout << "Circle 1 Radius: " << c1.getRadius() << endl;
+    cout << "Circle 2 Radius: " << c2.getRadius() << endl;
+
+    c1 = c2;
+
+    cout << "After assignment, Circle 1 Radius: " << c1.getRadius() << endl;
+
+    return 0;
+}
+OUTPUT:
+Circle 1 Radius: 6
+Circle 2 Radius: 16
+After assignment, Circle 1 Radius: 16
