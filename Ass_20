@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+
+class Addamount{
+    public:
+    int amount;
+
+    Addamount(){
+    amount=50;
+    }
+    Addamount(int add){
+        amount=50+add;
+    }
+    void disp(){
+        cout<<"The total amount in piggy bank is : $"<<amount<<endl;
+    }
+};
+int main(){
+    Addamount d1;
+    Addamount d2(200);
+    d1.disp();
+    d2.disp();
+    return 0;
+}
+OUTPUT:
+The total amount in piggy bank is : $50
+The total amount in piggy bank is : $250
