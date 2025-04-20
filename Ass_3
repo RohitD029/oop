@@ -1,0 +1,181 @@
+#include <iostream>
+using namespace std;
+
+class Staff {
+protected:
+    int code;
+    string name;
+
+public:
+    void getData() {
+        cout << "Enter Name: ";
+        cin>>name;
+        cout << "Enter Staff Code: ";
+        cin >> code;
+    }
+
+    void display() {
+        cout << "Name: " << name << endl;
+        cout << "Code: " << code << endl;
+    }
+};
+
+class Teacher : public Staff {
+    string subject, publication;
+
+public:
+    void getData() {
+        Staff::getData();
+        cout << "Enter Subject: ";
+        cin>>subject;
+        cout << "Enter Publication: ";
+        cin>>publication;
+    }
+
+    void display() {
+        Staff::display();
+        cout << "Subject: " << subject << endl;
+        cout << "Publication: " << publication << endl;
+    }
+};
+class Officer : public Staff {
+    string grade;
+
+public:
+    void getData() {
+        Staff::getData();
+        cout << "Enter Grade: ";
+        cin>>grade;
+    }
+
+    void display() {
+        Staff::display();
+        cout << "Grade: " << grade << endl;
+    }
+};
+
+class Typist : public Staff {
+protected:
+    float speed;
+
+public:
+    void getData() {
+        Staff::getData();
+        cout << "Enter Typing Speed (words per minute): ";
+        cin >> speed;  
+    }
+
+    void display() {
+        Staff::display();
+        cout << "Typing Speed: " << speed << " wpm" << endl;
+    }
+};
+
+class Regular : public Typist {
+public:
+    void getData() {
+        Typist::getData();
+    }
+
+    void display() {
+        cout << "Regular Typist Details:" << endl;
+        Typist::display();
+    }
+};
+
+class Casual : public Typist {
+    float daily_wages;
+
+public:
+    void getData() {
+        Typist::getData();
+        cout << "Enter Daily Wages: ";
+        cin >> daily_wages;
+
+    }
+
+    void display() {
+        cout << "Casual Typist Details:" << endl;
+        Typist::display();
+        cout << "Daily Wages: ₹" << daily_wages << endl;
+    }
+};
+
+int main() {
+    Teacher t;
+    Officer o;
+    Regular r;
+    Casual c;
+
+    cout << "\nEnter Teacher Details:\n";
+    t.getData();
+
+    cout << "\nEnter Officer Details:\n";
+    o.getData();
+
+    cout << "\nEnter Regular Typist Details:\n";
+    r.getData();
+
+    cout << "\nEnter Casual Typist Details:\n";
+    c.getData();
+
+    cout << "\nTeacher:\n";
+    t.display();
+
+    cout << "\nOfficer:\n";
+    o.display();
+
+    cout << "\nRegular Typist:\n";
+    r.display();
+
+    cout << "\nCasual Typist:\n";
+    c.display();
+
+    return 0;
+}
+OUTPUT:
+Enter Teacher Details:
+Enter Name: rebecca
+Enter Staff Code: 001
+Enter Subject: lifeskill 
+Enter Publication: pccoe 
+
+Enter Officer Details:
+Enter Name: rohit
+Enter Staff Code: 029
+Enter Grade: O
+
+Enter Regular Typist Details:
+Enter Name: abhi
+Enter Staff Code: 036
+Enter Typing Speed (words per minute): 70
+
+Enter Casual Typist Details:
+Enter Name: yash 
+Enter Staff Code: 035
+Enter Typing Speed (words per minute): 40
+Enter Daily Wages: 1000
+
+Teacher:
+Name: rebecca
+Code: 1
+Subject: lifeskill
+Publication: pccoe
+
+Officer:
+Name: rohit
+Code: 29
+Grade: O
+
+Regular Typist:
+Regular Typist Details:
+Name: abhi
+Code: 36
+Typing Speed: 70 wpm
+
+Casual Typist:
+Casual Typist Details:
+Name: yash
+Code: 35
+Typing Speed: 40 wpm
+Daily Wages: 1000 Rs
