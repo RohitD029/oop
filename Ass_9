@@ -1,0 +1,65 @@
+#include<iostream>
+using namespace std;
+
+class library
+{
+    public:
+
+    int loan=0,reserved=0,shelf=100;
+    void Bookloan()
+    {
+        cout<<"Enter the no of Books to be loaned: "<<endl;
+        cin>>loan;
+    }
+    void Bookreserved()
+    {
+        cout<<"Enter the no of Book to be reserved: "<<endl;
+        cin>>reserved;
+    }
+    void Bookshelf()
+    {
+        shelf=100-(loan+reserved);
+        cout<<"The Total no of Book on shelf are: "<<shelf<<endl;
+        cout<<"The no of Books loaned are: "<<loan<<endl;
+        cout<<"The no of Books reserved are: "<<reserved<<endl;
+        }
+
+};
+int main()
+{
+    int n=100,choice;
+    library s1;
+    
+    cout<<"\n-----Welcome to library-----"<<endl;
+    cout<<"The total no of Books in library are: "<<n<<endl;
+    cout<<"1.Loan Book.\n2.Reserve Book\n";
+    cout<<"Enter the choice: "<<endl;
+    cin>>choice;
+    if(choice==1)
+    {
+        s1.Bookloan();
+        s1.Bookshelf();
+    }
+
+    else if (choice==2)
+    {
+        s1.Bookreserved();
+        s1.Bookshelf();
+    }
+    else{
+        cout<<"Invalid choice!!!"<<endl;
+    }
+    return 0;
+}
+Output:
+-----Welcome to library-----
+The total no of Books in library are: 100
+1.Loan Book.
+2.Reserve Book
+Enter the choice:
+1
+Enter the no of Books to be loaned:
+10
+The Total no of Book on shelf are: 90
+The no of Books loaned are: 10
+The no of Books reserved are: 0
