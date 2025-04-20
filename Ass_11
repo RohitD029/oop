@@ -1,0 +1,47 @@
+#include<iostream>
+using namespace std;
+
+class Mammals
+{
+    public:
+    void fun1()
+    {
+        cout<<"I Belongs to Mammal category."<<endl;
+    }
+};
+
+class MarineAnimals
+{
+    public:
+    void fun2()
+    {
+      cout<<"I Belongs to Marine Animals category."<<endl;
+    }
+};
+
+class BlueWhale:public Mammals,public MarineAnimals
+{
+    public:
+    void fun3()
+    {
+        cout<<"I belongs to both category."<<endl;
+    }
+};
+
+int main()
+{
+    Mammals d1;
+    MarineAnimals d2;
+    BlueWhale d3;
+    d1.fun1();
+    d2.fun2();
+    d3.fun3();
+    d3.fun1();
+    d3.fun2();
+}
+Output:
+I Belongs to Mammal category.
+I Belongs to Marine Animals category.
+I belongs to both category.
+I Belongs to Mammal category.
+I Belongs to Marine Animals category.
