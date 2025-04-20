@@ -1,0 +1,205 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+class vehicle{
+    public:
+    int mileage,price;
+    
+
+};
+class car : public vehicle{
+    public:
+    int cost,warranty,seating_capacity;
+    string fuel_type;
+    void store(){
+        cout<<"enter ownership cost :";
+        cin>>cost;
+        cout<<"enter warranty :";
+        cin>>warranty;
+        cout<<"enter seating capacity :";
+        cin>>seating_capacity;
+        cout<<"enter fuel type :";
+        cin>>fuel_type;
+        cout<<"enter mileage :";
+        cin>>mileage;
+        cout<<"enter price :";
+        cin>>price;
+        
+    }
+    void display(){
+
+        cout<<"ownership cost :"<<cost<<endl;
+        cout<<"warranty :"<<warranty<<endl;
+        cout<<"seating capaity :"<<seating_capacity<<endl;
+        cout<<"fuel type :"<<fuel_type<<endl;
+        cout<<"mileage :"<<mileage<<endl;
+        cout<<"Price :"<<price<<endl;
+    }
+
+
+};
+class audi : public car{
+    public:
+    
+    void display(){
+        cout<<"model type : Q-8"<<endl;
+        car :: display();
+    }
+
+};
+class ford : public car{
+    public:
+    void display(){
+        cout<<"model type : Mustang"<<endl;
+        car:: display();
+    }
+};
+class bike : public vehicle{
+    public:
+    int no_cylinders,no_gears;
+    string cooling_type,wheel_type;
+    float fueltank_size;
+
+    void store(){
+        cout<<"enter no of cyliders: ";
+        cin>>no_cylinders;
+        cout<<"enter no of gears: ";
+        cin>>no_gears;
+        cout<<"enter cooling type: ";
+        cin>>cooling_type;
+        cout<<"enter wheel type: ";
+        cin>>wheel_type;
+        cout<<"enter fuel tank size: ";
+        cin>>fueltank_size;
+    }
+
+    void display(){
+
+        cout<<"no of cyliders: "<<no_cylinders<<endl;
+        cout<<"no of gears: "<<no_gears<<endl;
+        cout<<"cooling type: "<<cooling_type<<endl;
+        cout<<"wheel type: "<<wheel_type<<endl;
+        cout<<"fuel tank size: "<<fueltank_size<<endl;
+        
+    }
+
+};
+class bajaj : public bike{
+    public:
+    string make_type;
+    void display(){
+        cout<<"make_type of bike: Manual"<<endl;
+        bike::display();
+    }
+};
+class tvs : public bike{
+    public:
+    string make_type;
+    void display(){
+        cout<<"make_type of bike: Manual"<<endl;
+        bike::display();
+    }
+
+};
+int main(){
+    audi a;
+    ford f;
+
+    cout << "Enter Details of Audi: \n" << endl;
+    a.store();
+    cout << "\nDetails of Audi: \n" << endl;
+    a.display();
+
+    cout << "\nEnter Details of Ford:\n" << endl;
+    f.store();
+    cout << "\nDetails of Ford:\n" << endl;
+    f.display();
+
+    bajaj b1;
+    tvs b2;
+
+    cout << "\nEnter details of Bajaj bike:\n" << endl;
+    b1.store();
+    cout << "\nDetails of Bajaj bike:\n" << endl;
+    b1.display();
+
+    cout << "\nEnter details of TVS bike:\n" << endl;
+    b2.store();
+    cout << "\nDetails of TVS bike:\n" << endl;
+    b2.display();
+    
+    return 0;
+}
+OUTPUT:
+Enter Details of Audi: 
+
+enter ownership cost :10000000
+enter warranty :5
+enter seating capacity :4
+enter fuel type :petrol
+enter mileage :15
+enter price :8000000
+
+Details of Audi:
+
+model type : Q-8
+ownership cost :10000000
+warranty :5
+seating capaity :4
+fuel type :petrol
+mileage :15
+Price :8000000
+
+Enter Details of Ford:
+
+enter ownership cost :6000000
+enter warranty :5
+enter seating capacity :4
+enter fuel type :diesel
+enter mileage :20
+enter price :5000000
+
+Details of Ford:
+
+model type : Mustang
+ownership cost :6000000
+warranty :5
+seating capaity :4
+fuel type :diesel
+mileage :20
+Price :5000000
+
+Enter details of Bajaj bike:
+
+enter no of cyliders: 2
+enter no of gears: 5
+enter cooling type: air
+enter wheel type: alloy
+enter fuel tank size: 5
+
+Details of Bajaj bike:
+
+make_type of bike: Manual
+no of cyliders: 2
+no of gears: 5
+cooling type: air
+wheel type: alloy
+fuel tank size: 5
+
+Enter details of TVS bike:
+
+enter no of cyliders: 1
+enter no of gears: 4
+enter cooling type: air
+enter wheel type: alloy
+enter fuel tank size: 5
+
+Details of TVS bike:
+
+make_type of bike: Manual
+no of cyliders: 1
+no of gears: 4
+cooling type: air
+wheel type: alloy
+fuel tank size: 5
