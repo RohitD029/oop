@@ -1,0 +1,73 @@
+#include<iostream>
+using namespace std;
+
+class Marks
+{
+    public:
+    int n,roll,mathmark,physics_mark,chemistry_mark,Average;
+    string name;
+    void display()
+    {
+    cout<<"Enter the no of students:"<<endl;
+    cin>>n;
+
+    for(int i=1;i<n+1;i++)
+    {
+        cout<<"Enter the name of student"<<i<<":"<<endl;
+        cin>>name;
+        cout<<"Enter the roll no. of student"<<i<<":"<<endl;
+        cin>>roll;
+        cout<<"Enter the marks in maths of student"<<i<<":"<<endl;
+        cin>>mathmark;
+        cout<<"Enter the marks in physics of student"<<i<<":"<<endl;
+        cin>>physics_mark;
+        cout<<"Enter the marks in chemistry of student"<<i<<":"<<endl;
+        cin>>chemistry_mark;
+        Average=(physics_mark+mathmark+chemistry_mark)/3;
+        cout<<"The Average marks of student"<<i<<"are:"<<Average<<endl;
+        cout<<"The marks of student in maths is:"<<mathmark<<endl;
+        cout<<"The marks of student in physics is:"<<physics_mark<<endl;
+        cout<<"The marks of student in maths is:"<<chemistry_mark<<endl;
+        cout<<"The Average marks of student are:"<<Average<<endl;
+    }
+    }
+};
+int main()
+{
+   Marks d1;
+   d1.display();
+
+}
+OUTPUT :
+Enter the no of students:
+2
+Enter the name of student1:
+rohit
+Enter the roll no. of student1:
+029
+Enter the marks in maths of student1:
+100
+Enter the marks in physics of student1:
+99
+Enter the marks in chemistry of student1:
+90
+The Average marks of student1are:96
+The marks of student in maths is:100
+The marks of student in physics is:99
+The marks of student in maths is:90
+The Average marks of student are:96
+Enter the name of student2:
+abhi      
+Enter the roll no. of student2:
+036
+Enter the marks in maths of student2:
+100
+Enter the marks in physics of student2:
+99
+Enter the marks in chemistry of student2:
+45
+The Average marks of student2are:81
+The marks of student in maths is:100
+The marks of student in physics is:99
+The marks of student in maths is:45
+The Average marks of student are:81
