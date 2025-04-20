@@ -1,0 +1,116 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+class Account {
+protected:
+    string customerName;
+    int accountNumber;
+    string accountType;
+    float balance;
+
+public:
+    Account() {
+
+        customerName = "rohit";
+        accountNumber = 129;
+        balance = 1000;
+        cout<<"customerName :"<<customerName<<endl;
+        cout<<"accountNumber :"<<accountNumber<<endl;
+        cout<<"Initial Balance :"<<balance<<endl;
+
+        float amount;
+        cout << "Enter amount to deposit: ";
+        cin >> amount;
+        balance += amount;
+        cout << "Deposit successful.\nUpdated balance: " << balance << endl;
+
+        cout << "Account Balance: " << balance << endl;
+    }
+};
+
+class Sav_Acc : public Account {
+public:
+    Sav_Acc() {
+        float rate;
+        int time;
+        cout << "Enter interest rate (%): ";
+        cin >> rate;
+        cout << "Enter time (in years): ";
+        cin >> time;
+        float interest = balance * pow((1 + rate / 100), time) - balance;
+        balance += interest;
+        cout << "Interest of " << interest << " added. \nUpdated balance: " << balance << endl;
+        int amount;
+        cout << "Enter amount to withdraw: ";
+        cin >> amount;
+        if (amount <= balance) {
+            balance -= amount;
+            cout << "Withdrawal successful. \nRemaining balance: " << balance << endl;
+        } else {
+            cout << "Insufficient balance." << endl;
+        }
+    }
+};
+
+class Cur_Acc : public Account {
+private:
+    float minBalance = 500;
+    float serviceCharge = 50;
+
+public:
+    Cur_Acc() {
+        float amount;
+        cout << "Enter amount to withdraw: ";
+        cin >> amount;
+        if (amount <= balance) {
+            balance -= amount;
+            cout << "Withdrawal successful.\nUpdated balance: " << balance << endl;
+        } 
+        else {
+            cout << "Insufficient balance." << endl;
+        }
+        if (balance < minBalance) {
+            balance -= serviceCharge;
+            cout << "Balance below minimum. Service charge of " << serviceCharge << " imposed." << endl;
+            cout<<"remaining balance is: "<<balance<<endl;
+        }
+    }
+};
+
+int main() {
+    int choice;
+    cout<<"Chequebook facility is available for current accounts... "<<endl;
+    cout << "Choose Account Type:\n1. Savings Account\n2. Current Account\nEnter choice: ";
+    cin >> choice;
+
+    if (choice == 1) {
+        
+        Sav_Acc b1;
+        
+    } else if (choice == 2) {
+        Cur_Acc b2;
+        
+    } else {
+        cout << "Invalid choice." << endl;
+    }
+
+    return 0;
+}
+OUTPUT: 
+Choose Account Type:
+1. Savings Account
+2. Current Account
+Enter choice: 2
+customerName :rohit
+accountNumber :129
+Initial Balance :1000
+Enter amount to deposit: 200
+Deposit successful.
+Updated balance: 1200
+Account Balance: 1200
+Enter amount to withdraw: 700
+Withdrawal successful.
+Updated balance: 500
