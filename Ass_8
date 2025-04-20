@@ -1,0 +1,70 @@
+#include <iostream>
+using namespace std;
+
+class Show {
+    int totalSeats;
+
+public:
+    int bookedseats;
+    Show() {
+        totalSeats = 10; 
+        bookedseats = 0;
+    }
+    
+    void bookSeat() {
+        cout<<"enter number of seats to book: "<<endl;
+        cin>>bookedseats;
+        if (totalSeats > 0) {
+            cout <<bookedseats<<" Seats booked successfully.\n";
+        } else {
+            cout << "Sorry, no seats available.\n";
+        }
+    }
+
+    void showSeats() {
+        int remaining = totalSeats - bookedseats;
+        cout << "Remaining seats: " << remaining << endl;
+    }
+
+};
+
+int main() {
+    Show show;
+    int choice, showChoice;
+
+        cout << "Choose show: 1. 1PM  2. 5PM  3. 8:30PM: ";
+        cin >> showChoice;
+
+        cout << "\n1. Book Seat\n2. View Available Seats\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        if(showChoice==1 || showChoice==2 || showChoice==3){
+            if(choice==1){
+                show.bookSeat();
+                show.showSeats();
+            }
+            else if(choice == 2){
+                show.showSeats();
+            }
+            else{
+                cout<<"Invalid choice!"<<endl;
+            }
+        }
+        else{
+            cout<<"Invalid choice!"<<endl;
+            
+        }
+
+    return 0;
+}
+OUTPUT:
+Choose show: 1. 1PM  2. 5PM  3. 8:30PM: 3
+
+1. Book Seat
+2. View Available Seats
+Enter your choice: 1
+enter number of seats to book: 
+4
+4 Seats booked successfully.
+Remaining seats: 6
