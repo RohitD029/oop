@@ -1,0 +1,85 @@
+#include <iostream>
+#include <string>
+using namespace std;
+ 
+class Book {
+     string title;
+     string author;
+     string publisher;
+     float price;
+     int stock;
+ 
+ public:
+     // Constructor
+     Book(string t, string a, string p, float pr, int s) {
+         title = t;
+         author = a;
+         publisher = p;
+         price = pr;
+         stock = s;
+     }
+ 
+     // Function to check if the book matches
+     bool search(string t, string a) {
+         return (title == t && author == a);
+     }
+ 
+     // Display book details
+     void display() {
+         cout << "Title: " << title << endl;
+         cout << "Author: " << author << endl;
+         cout << "Publisher: " << publisher << endl;
+         cout << "Price: $" << price << endl;
+         cout << "Stock: " << stock << endl;
+     }
+ 
+     // Function to buy book
+     void buy(int count) {
+         if (count <= stock) {
+             cout << "Total cost: $" << price * count << endl;
+             stock -= count;
+         } else {
+             cout << "Required copies not in stock.\n";
+         }
+     }
+ };
+ 
+ int main() {
+     // Create book objects
+     Book book1("Wings Of Fire", "APJ Abdul Kalam", "Sahitya", 599.0, 15);
+     Book book2("Kamyani", "Jaishankar Prasad", "Balbharti", 400.0, 20);
+ 
+     string t, a;
+     cout << "Enter book title: ";
+     getline(cin, t);
+     cout << "Enter author name: ";
+     getline(cin, a);
+ 
+     if (book1.search(t, a)) {
+         book1.display();
+         int copies;
+         cout << "Enter number of copies: ";
+         cin >> copies;
+         book1.buy(copies);
+     } else if (book2.search(t, a)) {
+         book2.display();
+         int copies;
+         cout << "Enter number of copies: ";
+         cin >> copies;
+         book2.buy(copies);
+     } else {
+         cout << "Book not found.\n";
+     }
+ 
+     return 0;
+ }
+ OUTPUT:
+ Enter book title: Wings Of Fire
+ Enter author name: APJ Abdul Kalam
+ Title: Wings Of Fire
+ Author: APJ Abdul Kalam
+ Publisher: Sahitya
+ Price: $599
+ Stock: 15
+ Enter number of copies: 4
+ Total cost: $2396
