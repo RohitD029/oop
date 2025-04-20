@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+
+class student
+{
+    public:
+    int n;
+    string name;
+    void details()
+    {
+        cout<<"Enter the no of students n: "<<endl;
+        cin>>n;
+        for(int i=0;i<n;i++)
+        {
+        cout<<"Enter the name of student:"<<endl;
+        cin>>name;
+        cout<<"The name of student you entered is:"<<name<<endl;
+        }
+        
+    }
+};
+int main()
+{
+    student s1;
+    s1.details();
+}
+Output:
+Enter the no of students n: 
+4
+Enter the name of student:
+Rohit
+The name of student you entered is:Rohit
+Enter the name of student:
+Rohan
+The name of student you entered is:Rohan
+Enter the name of student:
+Abhishek
+The name of student you entered is:Abhishek
+Enter the name of student:
+Raju
+The name of student you entered is:Raju
