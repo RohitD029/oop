@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std;
+
+class Fruit
+{
+    public:
+    int c1;
+    int c2;
+    void items()
+    {
+        cout<<"Enter  the no. of Mangoes in basket: "<<endl;
+        cin>>c1;
+        cout<<"Enter  the no. of Apples in basket: "<<endl;
+        cin>>c2;
+        int Basket=c1+c2;
+        cout<<"The total Fruits in basket are: "<<Basket<<endl;
+    }
+};
+class Mango:public Fruit
+{
+    public:
+    void displayMango()
+    {
+        cout<<"The total mangoes in basket are: "<<c1<<endl;
+    }
+
+};
+class Apple:public Fruit
+{
+    public:
+    void displayApple()
+    {
+        cout<<"The total Apples in basket are: "<<c2<<endl;
+    }
+
+};
+
+int main()
+{
+    Fruit f0;
+    f0.items();
+
+    Mango f1; 
+    f1.c1 = f0.c1; 
+    f1.displayMango();
+
+    Apple f2;
+    f2.c2=f0.c2;
+    f2.displayApple();
+}
+Output:
+Enter  the no. of Mangoes in basket: 
+15
+Enter  the no. of Apples in basket:
+20
+The total Fruits in basket are: 35
+The total mangoes in basket are: 15
+The total Apples in basket are: 20
