@@ -1,0 +1,137 @@
+#include <iostream>
+using namespace std;
+
+// Base Class-RBI
+class RBI {
+public:
+    float interestRate = 4.0;
+    float minBalance = 1000;
+    float maxWithdraw = 50000;
+
+    void showGuidelines() {
+        cout << "RBI Guidelines:\n";
+        cout << "Minimum Interest Rate: " << interestRate << "%\n";
+        cout << "Minimum Balance: Rs." << minBalance << endl;
+        cout << "Maximum Withdrawal Limit: Rs." << maxWithdraw << endl;
+    }
+};
+
+class SBI : public RBI{
+public:
+    float interestRate = 4.5;
+
+    void showBankInfo() {
+        cout << "\nBank: SBI\n";
+        cout << "SBI Interest Rate: " << interestRate << "%\n";
+    }
+};
+class ICICI : public RBI{
+public:
+  float interestRate=5.5;
+  void showBankInfo(){
+      cout<< "\nBank: ICICI\n";
+      cout<< "ICICI Interest rate: "<<interestRate<<"%\n";
+  }
+};
+
+class Customer {
+public:
+    string name;
+    int accNo;
+    float balance;
+
+    Customer(string n, int a) {
+        name = n;
+        accNo = a;
+        balance = 0;
+    }
+
+    void deposit(float amt) {
+        balance += amt;
+        cout << "Deposited Rs." << amt << ". Balance: Rs." << balance << endl;
+    }
+
+    void withdraw(float amt, RBI bank) {
+        if (amt > bank.maxWithdraw) {
+            cout << "Cannot withdraw Rs." << amt << ": exceeds max limit.\n";
+        } else if ((balance - amt) < bank.minBalance) {
+            cout << "Cannot withdraw Rs." << amt << ": below min balance.\n";
+        } else {
+            balance -= amt;
+            cout << "Withdrawn Rs." << amt << ". Balance: Rs." << balance << endl;
+        }
+    }
+
+    void showCustomer() {
+        cout << "\nCustomer: " << name << "\nAccount No: " << accNo << "\nBalance: Rs." << balance << endl;
+    }
+};
+
+int main() {
+    RBI d;
+    d.showGuidelines();
+    int choice;
+    cout<<"Enter Your Bank:\n1.SBI \n2.ICICI"<<endl;
+    cin>>choice;
+    Customer c1("Rajesh", 41010112);
+    
+    if(choice==1){
+    SBI sbiBank;
+    sbiBank.showBankInfo();
+    
+    c1.deposit(12000);
+    c1.withdraw(2000, sbiBank);
+    c1.withdraw(60000, sbiBank); 
+    c1.showCustomer();
+    }
+    else if(choice==2){
+        ICICI iciBank;
+        iciBank.showBankInfo();
+        
+    c1.deposit(15000);
+    c1.withdraw(4000, iciBank);
+    c1.withdraw(80000, iciBank); 
+    c1.showCustomer();
+    }
+    else{
+    cout<<"Invalid Choice!!";
+    }
+    return 0;
+}
+OUTPUT 1.
+RBI Guidelines:
+Minimum Interest Rate: 4%
+Minimum Balance: Rs.1000
+Maximum Withdrawal Limit: Rs.50000
+Enter Your Bank:
+1.SBI
+2.ICICI
+
+Bank: SBI
+SBI Interest Rate: 4.5%
+Deposited Rs.12000. Balance: Rs.12000
+Withdrawn Rs.2000. Balance: Rs.10000
+Cannot withdraw Rs.60000: exceeds max limit.
+
+Customer: Rajesh
+Account No: 41010112
+Balance: Rs.10000
+
+OUTPUT 2.
+RBI Guidelines:
+Minimum Interest Rate: 4%
+Minimum Balance: Rs.1000
+Maximum Withdrawal Limit: Rs.50000
+Enter Your Bank:
+1.SBI
+2.ICICI
+
+Bank: ICICI
+ICICI Interest rate: 5.5%
+Deposited Rs.15000. Balance: Rs.15000
+Withdrawn Rs.4000. Balance: Rs.11000
+Cannot withdraw Rs.80000: exceeds max limit.
+
+Customer: Rajesh
+Account No: 41010112
+Balance: Rs.11000
