@@ -1,0 +1,70 @@
+#include<iostream>
+using namespace std;
+
+class shape
+{
+    public:
+
+    void printshape()
+    {
+        cout<<"This is a shape"<<endl;
+    }
+};
+class polygon:public shape
+{
+    public:
+    void printshape()
+    {
+        cout<<"polygon is a shape"<<endl;
+    }
+
+};
+class rectangle:public polygon
+{
+    public:
+    void printshape()
+    {
+        cout<<"rectangle is a polygon"<<endl;
+    }
+
+};
+class triangle:public polygon
+{
+    public:
+    void printshape()
+    {
+        cout<<"Triangle is a polygon"<<endl;
+    }
+
+};
+class square:public rectangle
+{
+    public:
+    void printshape()
+    {
+        cout<<"square is a rectangle"<<endl;
+    }
+
+};
+int main()
+{
+    shape d1;
+    polygon d2;
+    rectangle d3;
+    triangle d4;
+    square d5;
+
+    d1.printshape();
+    d2.polygon::printshape();
+    d3.rectangle::printshape();
+    d4.triangle::printshape();
+    d5.square::printshape();
+
+    return 0;
+
+}
+Output:
+polygon is a shape
+rectangle is a polygon
+Triangle is a polygon
+square is a rectangle
