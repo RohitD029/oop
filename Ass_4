@@ -1,0 +1,103 @@
+#include <iostream>
+using namespace std;
+
+class Person {
+public:
+    string name;
+    int code;
+
+    void inputPerson() {
+        cout << "Enter Name: ";
+        cin >> name;
+        cout << "Enter Code: ";
+        cin >> code;
+    }
+
+    void displayPerson() {
+        cout << "Name: " << name << endl;
+        cout << "Code: " << code << endl;
+    }
+};
+
+class Account : public Person {
+public:
+    float pay;
+    void inputAccount() {
+        cout << "Enter Pay: ";
+        cin >> pay;
+    }
+
+    void displayAccount() {
+        cout << "Pay: " << pay << endl;
+    }
+};
+
+
+class Admin : public Person {
+
+public:
+    int experience;
+    void inputAdmin() {
+        cout << "Enter Experience (years): ";
+        cin >> experience;
+    }
+
+    void displayAdmin() {
+        cout << "Experience: " << experience << " years" << endl;
+    }
+};
+
+class Master : public Account, public Admin {
+public:
+    void input() {
+        Admin :: inputPerson();    
+        inputAccount();   
+        inputAdmin();     
+    }
+
+    void update() {
+        cout << "\n--- Update Info ---\n";
+        input();  
+    }
+
+    void display() {
+        cout << "\n--- Display Info ---\n";
+        Admin :: displayPerson();
+        displayAccount();
+        displayAdmin();
+    }
+};
+
+int main() {
+    Master m;
+    m.input();       
+    m.display();     
+
+    m.update();    
+    m.display();     
+
+    return 0;
+}
+OUTPUT: 
+Enter Name: rohit
+Enter Code: 029
+Enter Pay: 200000
+Enter Experience (years): 2
+
+--- Display Info ---
+Name: rohit
+Code: 29
+Pay: 200000
+Experience: 2 years
+
+--- Update Info ---
+Enter Name: rohit
+Enter Code: 036
+Enter Pay: 500000 
+Enter Experience (years): 5
+
+--- Display Info ---
+Name: rohit
+Code: 36
+Pay: 500000
+Experience: 5 years
