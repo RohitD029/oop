@@ -1,0 +1,70 @@
+#include<iostream>
+using namespace std;
+class DB;
+
+class DM {
+    int meters, centimeters;
+
+public:
+    void read() {
+        cout << "Enter meters: ";
+        cin >> meters ;
+        cout << "Enter centimeters: ";
+        cin>> centimeters;
+    }
+
+    void display() {
+        cout << "Total Distance = " << meters << " meters " << centimeters << " centimeters\n";
+    }
+
+    friend DM add(DM, DB);
+};
+
+class DB {
+    int feet, inches;
+
+public:
+    void read() {
+        cout << "Enter feet: ";
+        cin >> feet;
+        cout<<"Enter inches: ";
+        cin >> inches;
+    }
+
+    friend DM add(DM, DB);
+};
+
+// Friend function to add DM and DB and return result in DM
+DM add(DM d1, DB d2) {
+    // Convert DB to centimeters
+    int cm = d2.feet * 30 + d2.inches * 2.5;
+
+    // Convert DM to centimeters
+    int total_cm = d1.meters * 100 + d1.centimeters + cm;
+
+    // Convert total centimeters to meters and centimeters
+    DM result;
+    result.meters = total_cm / 100;
+    result.centimeters = total_cm % 100;
+
+    return result;
+}
+
+int main() {
+    DM d1;
+    DB d2;
+
+    d1.read();
+    d2.read();
+
+    DM result = add(d1, d2);
+    result.display();
+
+    return 0;
+}
+OUTPUT:
+Enter meters: 2
+Enter centimeters: 100
+Enter feet: 3
+Enter inches: 12
+Total Distance = 4 meters 20 centimeters
